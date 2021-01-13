@@ -1,24 +1,76 @@
 from Pet import Pet
 
+food = {
+    "apple": 0,
+    "melon": 1,
+    "pumpkin_pie": 2,
+    "carrot": 3,
+    "potato": 4,
+    "mushroom_soup": 5,
+    "flower": 6,
+    "hay": 7,
+    "wheat": 8,
+    "bread": 9,
+    "cookie": 10,
+    "cake": 11,
+    "raw_fish": 12,
+    "raw_porkchop": 13,
+    "steak": 14,
+    "bone": 15,
+    "rotten_flesh": 16,
+    "magma_cream": 17,
+    "water": 27,
+    "milk": 28,
+    "lava": 29,
+    "stick": 33,
+    "ball": 34,
+    "leash": 35,
+    "feather": 42,
+    "frisbee": 43,
+    "sword": 44,
+}
+
 pets = {
     "Silverfish": [Pet("stick", "water", "cake", "Silverfish")],
-    "Cat": [Pet("stick", "water", "cake", "Cat")],                                                #
-    "Chicken": [Pet("frisbee", "water", "flower", "Adult_Chicken"),
-                Pet("stick", "milk", "cookie", "Baby_Chicken")],
-    "Wolf": [Pet("leash", "water", "bone", "Adult_Wolf"),
-             Pet("ball", "milk", "cookie", "Adult_Wolf")],
-    "Bat": [Pet("stick", "water", "melon")],
-    "Rabbit": [Pet("stick", "water", "carrot", "Black_Rabbit"),
-               Pet("stick", "water", "carrot", "Brown_Rabbit"),
-               Pet("stick", "water", "carrot", "White_Rabbit"),
-               Pet("ball", "water", "carrot", "Black_&_White_Rabbit"),
-               Pet("ball", "water", "carrot", "Gold_Rabbit"),
-               Pet("ball", "water", "carrot", "Salt_&_Pepper_Rabbit"),
-               Pet("sword", None, "unknown", "Killer_Rabbit")],
-    "Villager": [Pet("stick", "water", "cake", "Cat")],                                           #
-    "Zombie": [Pet("stick", "water", "cake", "Cat")],                                             #
-    "Little_Helper": [Pet("frisbee", "milk", "cookie", "Red_Helper"),
-                      Pet("ball", "milk", "cake", "Green_Helper")],
+    "Cat": [Pet("ball", "milk", "raw_fish", "Cat", 10),
+            Pet("ball", "milk", "raw_fish", "Cat", 11),
+            Pet("ball", "milk", "raw_fish", "Cat", 12),
+            Pet("leash", "milk", "cake", "Cat", 13),
+            Pet("leash", "milk", "cake", "Cat", 14),
+            Pet("leash", "milk", "cake", "Cat", 15),
+            Pet("ball", "milk", "raw_fish", "Cat", 16),
+            Pet("leash", "milk", "cake", "Cat", 19)],
+    "Chicken": [Pet("frisbee", "water", "flower", "Adult_Chicken", 10),
+                Pet("stick", "milk", "cookie", "Baby_Chicken", 11)],
+    "Wolf": [Pet("leash", "water", "bone", "Adult_Wolf", 10),
+             Pet("ball", "milk", "cookie", "Babye_Wolf", 11)],
+    "Bat": [Pet("stick", "water", "melon", "Bat")],
+    "Rabbit": [Pet("stick", "water", "carrot", "Black_Rabbit", 10),
+               Pet("ball", "water", "carrot", "Black_&_White_Rabbit", 11),
+               Pet("stick", "water", "carrot", "Brown_Rabbit", 12),
+               Pet("ball", "water", "carrot", "Gold_Rabbit", 13),
+               Pet("ball", "water", "carrot", "Salt_&_Pepper_Rabbit", 14),
+               Pet("stick", "water", "carrot", "White_Rabbit", 15),
+               Pet("sword", None, "unknown", "Killer_Rabbit", 16)],
+    "Villager": [Pet("sword", "lava", "steak", "Blacksmith", 10),
+                 Pet("stick", "milk", "pumpkin_pie", "Baby_Blacksmith", 11),
+                 Pet("sword", "lava", "steak", "Butcher", 12),
+                 Pet("ball", "milk", "cookie", "Baby_Butcher", 13),
+                 Pet("feather", "milk", "potato", "Farmer", 14),
+                 Pet("stick", "milk", "cake", "Baby_Farmer", 15),
+                 Pet("frisbee", "water", "apple", "Librarian", 16),
+                 Pet("feather", "milk", "cookie", "Baby_Librarian", 19),
+                 Pet("frisbee", "water", "bread", "Priest", 20),
+                 Pet("feather", "milk", "cake", "Baby_Priest", 21),
+                 Pet("stick", "lava", "rotten_flesh", "Zombie_Villager", 22),
+                 Pet("feather", "milk", "pumpkin_pie", "Witch", 23)],
+    "Zombie": [Pet("sword", "lava", "rotten_flesh", "Zombie", 10),
+               Pet("sword", "milk", "cake", "Baby_Zombie", 11),
+               Pet("unknown", "unknown", "unknown", "Frozen_Zombie", 12),
+               Pet("unknown", "unknown", "unknown", "Growing_Zombie", 13),
+               Pet("unknown", "unknown", "unknown", "Burning_Zombie", 14)],
+    "Little_Helper": [Pet("frisbee", "milk", "cookie", "Red_Helper", 10),
+                      Pet("ball", "milk", "cake", "Green_Helper", 11)],
     "Golem": [Pet("ball", "lava", "flower", "Golem")],
     "Enderman": [Pet("ball", "milk", "potato", "Enderman")],
     "Blaze": [Pet("stick", "lava", "magma_cream", "Blaze")],
@@ -27,124 +79,114 @@ pets = {
     "Endermite": [Pet("sword", "lava", None, "Endermite")],
     "Mini_Wither": [Pet(None, "lava", "rotten_flesh", "Mini_Wither")],
     "Clone": [Pet("unknown", "unknown", "unknown", "Clone")],
-    "Minecart": [Pet("unknown", "unknown", "unknown", "Clone")],                                 #
+    "Minecart": [Pet("unknown", "unknown", "unknown", "Minecart")],
     "Grinch": [Pet("frisbee", "water", "cookie", "Grinch")],
-    "Spider": [Pet("leash", "water", "unknown", "Spider"),
-               Pet("sword", "water", "steak", "Cave_Spider"),
-               Pet("unknown", "unknown", "steak", "Bouncy_Spider")],
-    "Cow": [Pet("feather", "milk", "wheat", "Adult_Cow"),
-            Pet("ball", "milk", "pumpkin_pie", "Baby_Cow"),
-            Pet("feather", "milk", "mushroom_soup", "Adult_Mooshroom"),
-            Pet("feather", "milk", "cookie", "Baby_Mooshroom")],
-    "Creeper": [Pet("leash", "lava", "cake", "CREEPER"),
-                Pet("sword", "lava", "cake", "CREEPER")],
-    "Horse": [Pet("unknown", "unknown", "unknown", "Clone")],                                  #
-    "Pig": [Pet("frisbee", "water", "apple", "Adult_Pig"),
-            Pet("leash", "milk", "apple", "Baby_Pig"),
-            Pet("frisbee", "lava", "melon", "Adult_Pigman"),
-            Pet("sword", "milk", "cookie", "Baby_Pigman")],
-    "Sheep": [Pet("leash", "water", "wheat", "Black_Sheep"),
-              Pet("leash", "water", "wheat", "Blue_Sheep"),
-              Pet("leash", "water", "wheat", "Brown_Sheep"),
-              Pet("leash", "water", "wheat", "Cyan_Sheep"),
-              Pet("leash", "water", "wheat", "Gray_Sheep"),
-              Pet("leash", "water", "wheat", "Green_Sheep"),
-              Pet("leash", "water", "wheat", "Light_Blue_Sheep"),
-              Pet("leash", "water", "wheat", "Lime_Sheep"),
-              Pet("leash", "water", "wheat", "Magenta_Sheep"),
-              Pet("leash", "water", "wheat", "Orange_Sheep"),
-              Pet("leash", "water", "wheat", "Pink_Sheep"),
-              Pet("leash", "water", "wheat", "Purple_Sheep"),
-              Pet("leash", "water", "wheat", "Red_Sheep"),
-              Pet("leash", "water", "wheat", "Silver_Sheep"),
-              Pet("leash", "water", "wheat", "White_Sheep"),
-              Pet("leash", "water", "wheat", "Yellow_Sheep"),
-              Pet("leash", "water", "wheat", "Rainbow_Sheep"),
-              Pet("leash", "water", "wheat", "Bouncy_Sheep"),
-              Pet("leash", "water", "wheat", "Merry_Sheep"),
-              Pet("frisbee", "milk", "melon", "Black_Baby_Sheep"),
-              Pet("frisbee", "milk", "melon", "Blue_Baby_Sheep"),
-              Pet("frisbee", "milk", "melon", "Brown_Baby_Sheep"),
-              Pet("frisbee", "milk", "melon", "Cyan_Baby_Sheep"),
-              Pet("frisbee", "milk", "melon", "Gray_Baby_Sheep"),
-              Pet("frisbee", "milk", "melon", "Green_Baby_Sheep"),
-              Pet("frisbee", "milk", "melon", "Light_Blue_Baby_Sheep"),
-              Pet("frisbee", "milk", "melon", "Lime_Baby_Sheep"),
-              Pet("frisbee", "milk", "melon", "Magenta_Baby_Sheep"),
-              Pet("frisbee", "milk", "melon", "Orange_Baby_Sheep"),
-              Pet("frisbee", "milk", "melon", "Pink_Baby_Sheep"),
-              Pet("frisbee", "milk", "melon", "Purple_Baby_Sheep"),
-              Pet("frisbee", "milk", "melon", "Red_Baby_Sheep"),
-              Pet("frisbee", "milk", "melon", "Silver_Baby_Sheep"),
-              Pet("frisbee", "milk", "melon", "White_Baby_Sheep"),
-              Pet("frisbee", "milk", "melon", "Yellow_Baby_Sheep")],
-    "Slime": [Pet("ball", "milk", "bone", "Big_Slime"),
-              Pet("unknown", "milk", "raw_fish", "Small_Slime"),  # document says Frisbee, Milk, Raw Fish
-              Pet("frisbee", "milk", "raw_fish", "Tiny_Slime"),
-              Pet("feather", "lava", "magma_cream", "Big_Magma_cube"),
-              Pet("ball", "lava", "magma_cream", "Small_Magma_cube"),
-              Pet("frisbee", "milk", "magma_cream", "Tiny_Magma_cube")],
-    "Skeleton": [Pet("frisbee", "lava", "rotten_flesh", "Skeleton"),
-                 Pet("sword", "lava", "none", "Wither_Skeleton"),
-                 Pet("ball", "water", "bone", "Frozen_Skeleton")],
+    "Spider": [Pet("leash", "water", "unknown", "Spider", 10),
+               Pet("sword", "water", "steak", "Cave_Spider", 11),
+               Pet("unknown", "unknown", "steak", "Bouncy_Spider", 12)],
+    "Cow": [Pet("feather", "milk", "wheat", "Adult_Cow", 10),
+            Pet("ball", "milk", "pumpkin_pie", "Baby_Cow", 11),
+            Pet("feather", "milk", "mushroom_soup", "Adult_Mooshroom", 12),
+            Pet("feather", "milk", "cookie", "Baby_Mooshroom", 13)],
+    "Creeper": [Pet("leash", "lava", "cake", "Creeper", 10),
+                Pet("sword", "lava", "cake", "Powered_Creeper", 11)],
+    "Horse": [Pet("leash", "water", "apple", "Black_Horse", 10),
+              Pet("leash", "water", "apple", "Brown_Horse", 11),
+              Pet("leash", "water", "apple", "Chestnut_Horse", 12),
+              Pet("leash", "water", "apple", "Creamy_Horse", 13),
+              Pet("leash", "water", "apple", "Dark_Brown_Horse", 14),
+              Pet("leash", "water", "apple", "Gray_Horse", 15),
+              Pet("leash", "water", "apple", "White_Horse", 16),
+              Pet("stick", "milk", "apple", "Baby_Brown_Horse", 19),
+              Pet("leash", "milk", "cake", "Baby_Chestnut_Horse", 20),
+              Pet("leash", "milk", "cake", "Baby_Creamy_Horse", 21),
+              Pet("leash", "milk", "cake", "Baby_Dark_BrownHorse", 22),
+              Pet("leash", "milk", "cake", "Baby_Gray_Horse", 23),
+              Pet("stick", "lava", "rotten_flesh", "Undead_Horse", 24),
+              Pet("stick", "lava", "rotten_flesh", "Skeleton_Horse", 25),
+              Pet("leash", "water", "hay", "Mule", 28),
+              Pet("leash", "water", "hay", "Donkey", 19)],
+    "Pig": [Pet("frisbee", "water", "apple", "Adult_Pig", 10),
+            Pet("leash", "milk", "apple", "Baby_Pig", 11),
+            Pet("frisbee", "lava", "melon", "Adult_Pigman", 12),
+            Pet("sword", "milk", "cookie", "Baby_Pigman", 13)],
+    "Sheep": [Pet("leash", "water", "wheat", "Black_Sheep", 10),
+              Pet("frisbee", "milk", "melon", "Black_Baby_Sheep", 11),
+              Pet("leash", "water", "wheat", "Blue_Sheep", 12),
+              Pet("frisbee", "milk", "melon", "Blue_Baby_Sheep", 13),
+              Pet("leash", "water", "wheat", "Brown_Sheep", 14),
+              Pet("frisbee", "milk", "melon", "Brown_Baby_Sheep", 15),
+              Pet("leash", "water", "wheat", "Cyan_Sheep", 16),
+              Pet("frisbee", "milk", "melon", "Cyan_Baby_Sheep", 19),
+              Pet("leash", "water", "wheat", "Gray_Sheep", 20),
+              Pet("frisbee", "milk", "melon", "Gray_Baby_Sheep", 21),
+              Pet("leash", "water", "wheat", "Green_Sheep", 22),
+              Pet("frisbee", "milk", "melon", "Green_Baby_Sheep", 23),
+              Pet("leash", "water", "wheat", "Light_Blue_Sheep", 24),
+              Pet("frisbee", "milk", "melon", "Light_Blue_Baby_Sheep", 25),
+              Pet("leash", "water", "wheat", "Lime_Sheep", 28),
+              Pet("frisbee", "milk", "melon", "Lime_Baby_Sheep", 29),
+              Pet("leash", "water", "wheat", "Magenta_Sheep", 30),
+              Pet("frisbee", "milk", "melon", "Magenta_Baby_Sheep", 31),
+              Pet("leash", "water", "wheat", "Orange_Sheep", 32),
+              Pet("frisbee", "milk", "melon", "Orange_Baby_Sheep", 33),
+              Pet("leash", "water", "wheat", "Pink_Sheep", 34),
+              Pet("frisbee", "milk", "melon", "Pink_Baby_Sheep", 10, 2),
+              Pet("leash", "water", "wheat", "Purple_Sheep", 11, 2),
+              Pet("frisbee", "milk", "melon", "Purple_Baby_Sheep", 12, 2),
+              Pet("leash", "water", "wheat", "Red_Sheep", 13, 2),
+              Pet("frisbee", "milk", "melon", "Red_Baby_Sheep", 14, 2),
+              Pet("leash", "water", "wheat", "Silver_Sheep", 15, 2),
+              Pet("frisbee", "milk", "melon", "Silver_Baby_Sheep", 16, 2),
+              Pet("leash", "water", "wheat", "White_Sheep", 19, 2),
+              Pet("frisbee", "milk", "melon", "White_Baby_Sheep", 20, 2),
+              Pet("leash", "water", "wheat", "Yellow_Sheep", 21, 2),
+              Pet("frisbee", "milk", "melon", "Yellow_Baby_Sheep", 22, 2),
+              Pet("leash", "water", "wheat", "Rainbow_Sheep", 23, 2),
+              Pet("leash", "water", "wheat", "Bouncy_Sheep", 24, 2),
+              Pet("leash", "water", "wheat", "Merry_Sheep", 25, 2)],
+    "Slime": [Pet("ball", "milk", "bone", "Big_Slime", 10),
+              Pet("unknown", "milk", "raw_fish", "Small_Slime", 11),  # document says Frisbee, Milk, Raw Fish
+              Pet("frisbee", "milk", "raw_fish", "Tiny_Slime", 12),
+              Pet("feather", "lava", "magma_cream", "Big_Magma_cube", 13),
+              Pet("ball", "lava", "magma_cream", "Small_Magma_cube", 14),
+              Pet("frisbee", "milk", "magma_cream", "Tiny_Magma_cube", 15)],
+    "Skeleton": [Pet("frisbee", "lava", "rotten_flesh", "Skeleton", 10),
+                 Pet("sword", "lava", "none", "Wither_Skeleton", 11),
+                 Pet("ball", "water", "bone", "Frozen_Skeleton", 12),
+                 Pet("unknown", "unknown", "unknown", "Smoldering_Skeleton", 13)],
     "Guardian": [Pet(None, "water", "flower", "Guardian"),
                  Pet("unknown", "water", "flower", "Elder_Guardian")],
-    "Squid": [Pet("frisbee", "water", "raw_fish")]
+    "Squid": [Pet("frisbee", "water", "raw_fish", "Squid")]
 }
 
-# Cats:
-# Adult cats: Black, Red, Siamese, Wild ocelot
-# Ball, Milk, Raw Fish
-# Baby cats: Black, Red, Siamese, wild ocelot
-# Leash, Milk, Cake
-
-
-#
-# Villagers:
-# Adult Blacksmith and Adult Butcher:
-# Steak, Lava, Sword
-# Baby Blacksmith:
-# Stick, Milk, Pumpkin Pie
-# Baby Butcher:
-# Ball, Milk, Cookie
-# Adult Farmer:
-# Feather, Milk, Potato
-# Baby Farmer:
-# Stick, Milk, Cake
-# Adult Librarian:
-# Frisbee, Water, Apple
-# Baby Librarian:
-# Feather, Milk, Cookie
-# Adult Priest:
-# Frisbee, Water, Bread
-# Baby Priest:
-# Feather, Milk, Cake
-# Zombie Villager:
-# Stick, Lava, Rotten Flesh
-# Witch:
-# Feather, Milk, Pumpkin Pie
-#
-# Zombies:
-# Adult Zombie:
-# Sword, Lava, Rotten Flesh
-# Baby Zombie:
-# Sword, Milk, Cake
-# Frozen Zombie:
-# unknown
-# Growing Zombie:
-# unknown
-#
-
-# Horses:
-# Adult Horses: Black, Brown, white, Chestnut, Creamy, Dark browm, Gray
-# Leash, Water, Apple
-# Mule and Donkey:
-# Leash, Water, Hay
-# Baby Brown Horse:
-# Stick, Milk, Apple
-# Other Baby Horses: Chestnut, Creamy, Dark browm, Gray
-# Leash, Milk, Cake
-# Skeleton and Undead Horses:
-# Stick, Lava, Rotten Flesh
-
-
+pet_homepage = {
+    "Silverfish": "assets/clay_ball.png",
+    "Cat": "assets/fish_cod_raw.png",
+    "Chicken": "assets/egg.png",
+    "Wolf": "assets/bone.png",
+    "Bat": "assets/coal.png",
+    "Rabbit": "assets/carrot.png",
+    "Villager": "assets/emerald.png",
+    "Zombie": "assets/rotten_flesh.png",
+    "Little_Helper": "assets/little_helper.png",
+    "Golem": "",
+    "Enderman": "assets/ender_pearl.png",
+    "Blaze": "",
+    "Snowman": "assets/snowball.png",
+    "Herobrine": "",
+    "Endermite": "assets/ender_eye.png",
+    "Mini_Wither": "",
+    "Clone": "",
+    "Minecart": "",
+    "Grinch": "",
+    "Spider": "assets/string.png",
+    "Cow": "assets/beef_raw.png",
+    "Creeper": "assets/gunpowder.png",
+    "Horse": "assets/saddle.png",
+    "Pig": "assets/porkchop_raw.png",
+    "Sheep": "assets/mutton_raw.png",
+    "Slime": "assets/slimeball.png",
+    "Skeleton": "assets/bow_standby.png",
+    "Squid": ""
+}
