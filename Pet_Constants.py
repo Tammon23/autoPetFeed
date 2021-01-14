@@ -27,19 +27,19 @@ food = {
     "leash": 35,
     "feather": 42,
     "frisbee": 43,
-    "sword": 44,
+    "sword": 44
 }
 
 pets = {
     "Silverfish": [Pet("stick", "water", "cake", "Silverfish")],
-    "Cat": [Pet("ball", "milk", "raw_fish", "Cat", 10),
-            Pet("ball", "milk", "raw_fish", "Cat", 11),
-            Pet("ball", "milk", "raw_fish", "Cat", 12),
-            Pet("leash", "milk", "cake", "Cat", 13),
-            Pet("leash", "milk", "cake", "Cat", 14),
-            Pet("leash", "milk", "cake", "Cat", 15),
-            Pet("ball", "milk", "raw_fish", "Cat", 16),
-            Pet("leash", "milk", "cake", "Cat", 19)],
+    "Cat": [Pet("ball", "milk", "raw_fish", "Cat_Black", 10),
+            Pet("ball", "milk", "raw_fish", "Cat_Red", 11),
+            Pet("ball", "milk", "raw_fish", "Cat_Siamese", 12),
+            Pet("leash", "milk", "cake", "Cat_Black_Baby", 13),
+            Pet("leash", "milk", "cake", "Cat_Red_Baby", 14),
+            Pet("leash", "milk", "cake", "Cat_Siamese_Baby", 15),
+            Pet("ball", "milk", "raw_fish", "Wild_Ocelot", 16),
+            Pet("leash", "milk", "cake", "Wild_Ocelot_Baby", 19)],
     "Chicken": [Pet("frisbee", "water", "flower", "Adult_Chicken", 10),
                 Pet("stick", "milk", "cookie", "Baby_Chicken", 11)],
     "Wolf": [Pet("leash", "water", "bone", "Adult_Wolf", 10),
