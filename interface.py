@@ -34,7 +34,7 @@ class Application(tk.Frame):
         self.num_clicks = 2
         self.lower_interval = None
         self.upper_interval = None
-        self.missing_pet_icon = Search("assets/gray_dye_selected.png", precision=0.95, debugg=True)
+        self.missing_pet_icon = Search("assets/gray_dye_selected.png", precision=0.95)
         self.book = Search("assets/book.png", precision=0.95)
         self.gold_pants = Search("assets/golden_leggings.png")
         self.boat = Search("assets/boat.png")
