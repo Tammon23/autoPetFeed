@@ -1,13 +1,16 @@
+import os
+import sys
 import time
 import random
+import tkinter
 import pyautogui
-import tkinter as tk
 from Pet_Constants import *
 from screen_search import Search
 from tkinter import font, messagebox
 
 
-def isFloatorNumeric(string):
+def isFloat(string):
+    """ A replacement for .isnumeric() that works with floats and ints """
     try:
         float(string)
         return True
@@ -15,7 +18,7 @@ def isFloatorNumeric(string):
         return False
 
 
-class Application(tk.Frame):
+class Application(tkinter.Frame):
     def __init__(self, master=None, pet_group_img=None, food_maps=None):
         super().__init__(master)
         self.window_width = 305
@@ -44,67 +47,67 @@ class Application(tk.Frame):
     def create_widgets(self):
         myFont = font.Font(size=15)
         button_width = 25
-        self.label_welcome = tk.Label(self, text="Status: IDLE", font=myFont)  # fg, bg, width, height
+        self.label_welcome = tkinter.Label(self, text="Status: IDLE", font=myFont)  # fg, bg, width, height
         self.label_welcome.grid(row=0, column=0, columnspan=2, padx=5, pady=5)
 
-        self.btn_get_slot_pos = tk.Button(self,
-                                          text="Generate Slot Position",
-                                          command=self.gen_slot_positions,
-                                          width=button_width,
-                                          font=myFont, borderwidth=4)
+        self.btn_get_slot_pos = tkinter.Button(self,
+                                               text="Generate Slot Position",
+                                               command=self.gen_slot_positions,
+                                               width=button_width,
+                                               font=myFont, borderwidth=4)
         self.btn_get_slot_pos.grid(row=1, column=0, columnspan=2, padx=5, pady=5)
 
-        self.btn_pet_icons = tk.Button(self,
-                                       text="Scan For Pets",
-                                       command=self.find_pets,
-                                       width=button_width,
-                                       font=myFont, borderwidth=4)
+        self.btn_pet_icons = tkinter.Button(self,
+                                            text="Scan For Pets",
+                                            command=self.find_pets,
+                                            width=button_width,
+                                            font=myFont, borderwidth=4)
         self.btn_pet_icons.grid(row=2, column=0, columnspan=2, padx=5, pady=5)
 
-        self.label_upper_interval = tk.Label(self, text="Upper Interval:", font=myFont)  # fg, bg, width, height
+        self.label_upper_interval = tkinter.Label(self, text="Upper Interval:", font=myFont)  # fg, bg, width, height
         self.label_upper_interval.grid(row=3, column=0, padx=5, pady=5, sticky="w")
 
-        self.entry_upper_interval = tk.Entry(self, bd=5)
+        self.entry_upper_interval = tkinter.Entry(self, bd=5)
         self.entry_upper_interval.grid(row=3, column=1)
 
-        self.label_lower_interval = tk.Label(self, text="Lower Interval:", font=myFont)  # fg, bg, width, height
+        self.label_lower_interval = tkinter.Label(self, text="Lower Interval:", font=myFont)  # fg, bg, width, height
         self.label_lower_interval.grid(row=4, column=0, columnspan=1, padx=5, pady=5, sticky="w")
 
-        self.entry_lower_interval = tk.Entry(self, bd=5)
+        self.entry_lower_interval = tkinter.Entry(self, bd=5)
         self.entry_lower_interval.grid(row=4, column=1)
 
-        self.label_num_clicks = tk.Label(self, text="Number of Clicks:", font=myFont)  # fg, bg, width, height
+        self.label_num_clicks = tkinter.Label(self, text="Number of Clicks:", font=myFont)  # fg, bg, width, height
         self.label_num_clicks.grid(row=5, column=0, columnspan=1, padx=5, pady=5, sticky="w")
 
-        self.entry_num_clicks = tk.Entry(self, bd=5)
+        self.entry_num_clicks = tkinter.Entry(self, bd=5)
         self.entry_num_clicks.grid(row=5, column=1)
 
-        self.btn_feed = tk.Button(self,
-                                  text="Feed Pets",
-                                  command=self.feed_pets,
-                                  width=button_width,
-                                  font=myFont,
-                                  borderwidth=4)
+        self.btn_feed = tkinter.Button(self,
+                                       text="Feed Pets",
+                                       command=self.feed_pets,
+                                       width=button_width,
+                                       font=myFont,
+                                       borderwidth=4)
         self.btn_feed.grid(row=6, column=0, columnspan=2, padx=5, pady=5)
 
-        self.btn_help = tk.Button(self,
-                                  text="HELP",
-                                  command=self.help,
-                                  width=button_width,
-                                  font=myFont,
-                                  borderwidth=4)
+        self.btn_help = tkinter.Button(self,
+                                       text="HELP",
+                                       command=self.help,
+                                       width=button_width,
+                                       font=myFont,
+                                       borderwidth=4)
         self.btn_help.grid(row=7, column=0, columnspan=2, padx=5, pady=5)
 
-        self.quit = tk.Button(self,
-                              text="QUIT",
-                              fg="red",
-                              command=self.master.destroy,
-                              width=button_width,
-                              font=myFont,
-                              borderwidth=4)
+        self.quit = tkinter.Button(self,
+                                   text="QUIT",
+                                   fg="red",
+                                   command=self.master.destroy,
+                                   width=button_width,
+                                   font=myFont,
+                                   borderwidth=4)
         self.quit.grid(row=8, column=0, columnspan=2, padx=5, pady=5)
 
-        self.label_version = tk.Label(self, text="Tammon23 - v1.1.0")
+        self.label_version = tkinter.Label(self, text="Tammon23 - v1.1.0")
         self.label_version.grid(row=9, column=1, sticky="e")
 
     def find_pets(self):
@@ -126,7 +129,8 @@ class Application(tk.Frame):
                     pets_to_feed[pet] = self.pet_group_img[pet][1]
 
                 else:
-                    print(f"Could not find icon for pet '{pet}' | Reference image: location '{self.pet_group_img[pet][0]}")
+                    print(
+                        f"Could not find icon for pet '{pet}' | Reference image: location '{self.pet_group_img[pet][0]}")
 
         self.pets_to_feed = pets_to_feed
 
@@ -151,13 +155,13 @@ class Application(tk.Frame):
             return
 
         upper_interval = self.entry_upper_interval.get()
-        if len(upper_interval) != 0 and not isFloatorNumeric(upper_interval):
+        if len(upper_interval) != 0 and not isFloat(upper_interval):
             error_message = 'Invalid upper interval!'
             messagebox.showerror(title="ERROR", message=error_message)
             return
 
         lower_interval = self.entry_lower_interval.get()
-        if len(lower_interval) != 0 and not isFloatorNumeric(lower_interval):
+        if len(lower_interval) != 0 and not isFloat(lower_interval):
             error_message = 'Invalid lower interval!'
             messagebox.showerror(title="ERROR", message=error_message)
             return
@@ -192,17 +196,19 @@ class Application(tk.Frame):
             # a set of pets we don't own
             missing_pets = None
 
-            # a set of pages weve already scaned for missing pets
+            # a set of pages we've already scanned for missing pets
             processed_pages = set()
 
             # used to track if the last pet in a variant was skipped
             before_skipped = False
 
-            print("Pet variants: ", end="")
+            print("Pet variants: ")
             for v in pet_variants:
                 print(str(v))
 
-            # print(f"Pet variants: {[str(v)+'\n' for v in pet_variants]}")
+            # used to track if we are currently on the menu
+            current_pet_page = 1
+
             last_pet_to_feed_slot = pet_variants[-1].slot_num
             for variant in pet_variants:
 
@@ -225,6 +231,20 @@ class Application(tk.Frame):
                 print(f"Working on pet {variant}")
                 s = variant
 
+                print("pages", current_pet_page, s.page)
+                if current_pet_page != s.page:
+                    # if we do have the pet go to the right page
+                    for i in range(s.page - 1):
+                        print(f"Going to next page")
+                        pyautogui.moveTo(self.slot_location[50])  # 50 is the slot location of the next arrow
+                        pyautogui.click(button='right')
+
+                        # adding random delay
+                        sleep_time = random.uniform(self.lower_interval, self.upper_interval)
+                        time.sleep(sleep_time)
+
+                        current_pet_page += 1
+
                 # if we have more than 1 pet look for messing
                 if s.page not in processed_pages:
 
@@ -235,25 +255,26 @@ class Application(tk.Frame):
                         x_mouse, y_mouse = self.slot_location[0]
                         x_mouse -= self.tile_size
                         # finding missing pets in slot
-                        pyautogui.moveTo(x=x_mouse, y=y_mouse, duration=0.4)  # mouse should just go somewhere off screen
+                        pyautogui.moveTo(x=x_mouse, y=y_mouse,
+                                         duration=0.4)  # mouse should just go somewhere off screen
                         time.sleep(1)
                         missing_pets = self.get_missing_pets()
                     else:
                         missing_pets = []
-                    print(f"Missing pet: {missing_pets}")
+                    print(f"Missing pet(s): {missing_pets}")
 
                 # if we don't have the pet don't attempt to feed it
                 # TODO Alternatively instead of checking if a pet exists allow the user to input it
                 if s.slot_num in missing_pets:
-                    print(f"skipping pet")
+                    print(f"skipping pet because missing")
                     # if the last pet to check is
                     if last_pet_to_feed_slot == s.slot_num:
-                        pyautogui.moveTo(self.slot_location[48])
-                        pyautogui.click(button='right')
+                        for _ in range(s.page):
+                            pyautogui.moveTo(self.slot_location[48])
+                            pyautogui.click(button='right')
 
-                        # adding random delay
-                        sleep_time = random.uniform(self.lower_interval, self.upper_interval)
-                        time.sleep(sleep_time)
+                            # adding delay in between page flips
+                            time.sleep(1.5)
 
                     # set to true indicates that we are skipping
                     # and that we should not reenter a pet variant submenu
@@ -262,16 +283,6 @@ class Application(tk.Frame):
 
                 else:
                     before_skipped = False
-
-                # if we do have the pet go to the right page
-                for i in range(s.page - 1):
-                    print(f"Going to next page")
-                    pyautogui.moveTo(self.slot_location[50])  # 50 is the slot location of the next arrow
-                    pyautogui.click(button='right')
-
-                    # adding random delay
-                    sleep_time = random.uniform(self.lower_interval, self.upper_interval)
-                    time.sleep(sleep_time)
 
                 # if the icon itself goes to the page and there are no subvariants
                 # then we should already be on the food page
@@ -287,6 +298,9 @@ class Application(tk.Frame):
                 # waiting until the menu changes to the pet window
                 # done by searching for the book icon continuously
                 self.book.imagesearch_loop(0.05)  # minecraft runs at 1/20s
+
+                # resetting the page number
+                current_pet_page = 1
 
                 # taking care of the pet
                 self.process_pet(pet=variant)
@@ -307,10 +321,8 @@ class Application(tk.Frame):
                 pyautogui.moveTo(self.slot_location[9])
                 pyautogui.click(button='right')
 
-
                 # waiting until we are on the pet menu
                 self.boat.imagesearch_loop(0.05)
-
 
         self.label_welcome["text"] = "Status: IDLE"
 
@@ -330,11 +342,10 @@ class Application(tk.Frame):
     def process_pet(self, pet):
         """ When called will feed the pet its favourite food, give the pet its favourite drink
             and take the pet on its favourite exercise
-            :param pet the pet object
-            :param num_clicks the number of times the item should be clicked (max should be 2 min should be 1) """
-
+            :param pet the pet object """
         # feeding the pet
         if pet.food is None or pet.food == "unknown":
+            print("Pet's favourite is unknown or none so choosing random (if wrong contact Tammon)")
             pyautogui.moveTo(self.slot_location[random.randint(0, 17)])
         else:
             pyautogui.moveTo(self.slot_location[self.food_maps[pet.food]])
@@ -346,6 +357,7 @@ class Application(tk.Frame):
 
         # quenching pet's thirst
         if pet.drink is None or pet.drink == "unknown":
+            print("Pet's favourite drink is unknown or none so choosing random (if wrong contact Tammon)")
             pyautogui.moveTo(self.slot_location[random.randint(27, 29)])
         else:
             pyautogui.moveTo(self.slot_location[self.food_maps[pet.drink]])
@@ -360,6 +372,7 @@ class Application(tk.Frame):
         # exercising pet
         # quenching pet's thirst
         if pet.exercise is None or pet.exercise == "unknown":
+            print("Pet's favourite exercise routine is unknown or none so choosing random (if wrong contact Tammon)")
             fun = [33, 34, 35, 42, 43, 44]
             pyautogui.moveTo(self.slot_location[random.choice(fun)])
         else:
@@ -376,7 +389,7 @@ class Application(tk.Frame):
         self.label_welcome["text"] = "Status: Getting Slot Coordinates"
 
         # locating pets menu icon position
-        icon_search = Search("assets/empty_slot.png")
+        icon_search = Search(resource_path("assets/empty_slot.png"))
         x, y = icon_search.imagesearch()
 
         if x == -1:
@@ -389,32 +402,31 @@ class Application(tk.Frame):
             for i in range(9):
                 self.slot_location[index] = ((x + i * self.tile_size) + self.tile_size / 2, (y + j * self.tile_size) +
                                              self.tile_size / 2)
+                print(f"{index}: {self.slot_location[index]}")
                 index += 1
 
         self.label_welcome["text"] = "Status: Found Slot Positions"
 
     def get_missing_pets(self):
-        """ Retrieves the slots of all pets that are missing
-         :param missing_pet_icon the icon used to represent a missing pet """
+        """ Retrieves the slots of all pets that are missing """
 
         # grabbing all center coordinates of all existing matches
         locations, picture_dimension = self.missing_pet_icon.imagesearch_multiple(pic_size=True)
         w, h = picture_dimension
 
         # iterating over each slot to locate missing pet
-        misssing_pets_slot = []
+        missing_pets_slot = []
         for slot in self.slot_location:
             for loc in locations:
                 x, y = loc
                 if self.slot_location[slot][0] - 31 <= x <= self.slot_location[slot][0] - 31 + w and \
                         self.slot_location[slot][1] - 31 <= y <= self.slot_location[slot][1] - 31 + h:
-                    misssing_pets_slot.append(slot)
-                    print(f"Missing pet slots: {misssing_pets_slot}")
+                    missing_pets_slot.append(slot)
 
-        return set(misssing_pets_slot)
+        return set(missing_pets_slot)
 
 
 if __name__ == "__main__":
-    root = tk.Tk()
+    root = tkinter.Tk()
     app = Application(master=root, pet_group_img=pet_homepage, food_maps=food)
     app.mainloop()
