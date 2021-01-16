@@ -22,7 +22,7 @@ class Application(tkinter.Frame):
         self.window_width = 305
         self.window_height = 450
         self.master = master
-        self.master.iconbitmap(resource_path('application_icon.ico'))
+        self.master.iconbitmap('application_icon.ico')
         self.master.resizable(width=False, height=False)
         self.master.geometry(f'{self.window_width}x{self.window_height}')
         self.master.title("Hypixel AutoPetFeeder")
@@ -35,10 +35,10 @@ class Application(tkinter.Frame):
         self.num_clicks = 2
         self.lower_interval = None
         self.upper_interval = None
-        self.missing_pet_icon = Search(resource_path("assets/gray_dye_selected.png"), precision=0.95)
-        self.book = Search(resource_path("assets/book.png"), precision=0.95)
-        self.gold_pants = Search(resource_path("assets/golden_leggings.png"))
-        self.boat = Search(resource_path("assets/boat.png"))
+        self.missing_pet_icon = Search("assets/gray_dye_selected.png", precision=0.95)
+        self.book = Search("assets/book.png", precision=0.95)
+        self.gold_pants = Search("assets/golden_leggings.png")
+        self.boat = Search("assets/boat.png")
         self.grid()
         self.create_widgets()
 
@@ -387,7 +387,7 @@ class Application(tkinter.Frame):
         self.label_welcome["text"] = "Status: Getting Slot Coordinates"
 
         # locating pets menu icon position
-        icon_search = Search(resource_path("assets/empty_slot.png"))
+        icon_search = Search("assets/empty_slot.png")
         x, y = icon_search.imagesearch()
 
         if x == -1:
